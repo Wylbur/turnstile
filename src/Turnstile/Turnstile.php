@@ -69,10 +69,10 @@ class Turnstile {
   /**
    * Constructor.
    */
-  public function __construct($site_key, $secret_key, $attributes = array(), RequestMethod $requestMethod = NULL) {
+  public function __construct($site_key, $secret_key, $attributes = array(), ?RequestMethod $requestMethod = NULL) {
     $this->siteKey = $site_key;
     $this->secretKey = $secret_key;
-    $this->requestMethod = $requestMethod;
+    $this->requestMethod = $requestMethod ?: new BackdropPost();
 
     if (!empty($attributes) && is_array($attributes)) {
       foreach ($attributes as $name => $attribute) {
